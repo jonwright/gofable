@@ -40,9 +40,9 @@ func readColumnfile(filename string) (cf Columnfile) {
 
 	for scanner.Scan() {
 		line := scanner.Text()
-        if len(line) == 0 { // skip empty lines
-            continue 
-        }
+		if len(line) == 0 { // skip empty lines
+			continue
+		}
 		if line[0] == "#"[0] {
 			if strings.Contains(line, "=") {
 				fs := strings.Fields(line)
@@ -57,8 +57,8 @@ func readColumnfile(filename string) (cf Columnfile) {
 			for i, v := range strings.Fields(line) {
 				if i >= cf.ncols {
 					ierr++
-                    fmt.Println("Error on line",cf.nrows)
-                    fmt.Println("line:",line)
+					fmt.Println("Error on line", cf.nrows)
+					fmt.Println("line:", line)
 					break // line too long
 				}
 				s[i], err = strconv.ParseFloat(v, 64)
