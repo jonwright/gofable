@@ -7,6 +7,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func usage() {
@@ -112,6 +113,10 @@ func main() {
 	if len(args) < 1 {
 		usage()
 	}
+	start := time.Now()
 	cf := readColumnfile(args[0])
+	fmt.Println("Time taken to read", time.Since(start))
+	start = time.Now()
 	printColumnfile(cf)
+	fmt.Println("Time taken to print", time.Since(start))
 }
